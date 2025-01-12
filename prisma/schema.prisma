@@ -16,14 +16,15 @@ model User {
   displayName String? @default("")
   userSetting UserSetting?
   posts Post[]
+  groupPosts UserOnGroupPosts[]
+
 }
 
 model GroupPost{
   id Int @default(autoincrement()) @id
   title String
   description String
-  group Group @relation(fields: [groupId], references: [id])
-  groupId Int
+  users UserOnGroupPosts[]
 }
 
 model UserOnGroupPosts{
